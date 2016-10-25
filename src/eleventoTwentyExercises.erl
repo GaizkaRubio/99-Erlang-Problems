@@ -10,7 +10,7 @@
 -author("grubio").
 
 %% API
--export([decodeModified/1, dupli/1, repli/2, drop/2, split/2]).
+-export([decodeModified/1, dupli/1, repli/2, drop/2, split/2, slice/3, rotate/2, remove_at/2]).
 
 %%Problem 12 - Decode a run-length encoded list.
 decodeModified(L) -> decodeModified([],L).
@@ -42,3 +42,21 @@ split(L, N) -> split(L,[[],[]] ,N-1).
 split([H|T], [A,B], 0) ->split(T, [A,B++[H]], 0);
 split([H|T], [A,B], N) -> split(T, [A++[H],B], N-1);
 split([], L, _) -> L.
+
+%%Problem 18 - Given two indices, i and k, the slice is the list containing the elements between the i'th and k'th
+%% element of the original list (both limits included).
+%% Start counting the elements with 1.
+slice([], _, _) -> [];
+slice([_|_], 1, 0) -> [];
+slice([H|T], 1, K) -> [H | slice(T, 1, K - 1)];
+slice([_|T], I, K) -> slice(T, I-1, K-1).
+
+%%Problem 19 - Rotate a list N places to the left.
+rotate(L, 0) -> L;
+rotate([H|T], N) when N > 0 -> rotate(T++[H], N - 1);
+rotate([H|T], N) when N < 0 -> rotate(T++[H], N + length([H|T])-1).
+
+%%%%Problem 20 - Remove the K'th element from a list.
+remove_at([H|T], N) when N =:= 0 ->  [H|remove_at(T, N-1)];
+remove_at([H|T], N) -> remove_at(T, N-1);
+remove_at([], N) -> [].
