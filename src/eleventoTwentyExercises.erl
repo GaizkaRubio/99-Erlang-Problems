@@ -10,7 +10,7 @@
 -author("grubio").
 
 %% API
--export([decodeModified/1, dupli/1, repli/2, drop/2]).
+-export([decodeModified/1, dupli/1, repli/2, drop/2, split/2]).
 
 %%Problem 12 - Decode a run-length encoded list.
 decodeModified(L) -> decodeModified([],L).
@@ -33,7 +33,12 @@ repli(NL, [], _) -> lists:flatten(NL).
 
 %%Problem 16 - Drop every N'th element from a list.
 drop(L, N) -> drop(L, N, N) .
-drop([H|T], N, C) -> [H|drop(T, N, C-1)];
-drop([H|T], N, 0) -> drop([H|T], N, N);
-drop([], _, 0) -> [].
+drop([], _, _) -> [];
+drop([_|T], N, 1) -> drop(T, N, N);
+drop([H|T], N, C) -> [H | drop(T, N, C-1)].
 
+%%Problem 17 - Split a list into two parts; the length of the first part is given.
+split(L, N) -> split(L,[[],[]] ,N-1).
+split([H|T], [A,B], 0) ->split(T, [A,B++[H]], 0);
+split([H|T], [A,B], N) -> split(T, [A++[H],B], N-1);
+split([], L, _) -> L.

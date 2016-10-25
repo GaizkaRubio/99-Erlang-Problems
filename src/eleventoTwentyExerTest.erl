@@ -19,3 +19,11 @@ exercise14_test() ->
 
 exercise15_test() ->
   ?assert(eleventoTwentyExercises:repli([a,b,c,c,d],3)==[a,a,a,b,b,b,c,c,c,c,c,c,d,d,d]).
+
+exercise16_test() ->
+  io:fwrite("~w", [eleventoTwentyExercises:drop([a,b,c,d,e,f,g,h,i,k],3)]),
+  ?assert(eleventoTwentyExercises:drop([a,b,c,d,e,f,g,h,i,k],3)==[a,b,d,e,g,h,k]).
+
+exercise17_test() ->
+  io:fwrite("~w", [eleventoTwentyExercises:split([a,b,c,d,e,f,g,h,i,k],3)]),
+  ?assert(eleventoTwentyExercises:split([a,b,c,d,e,f,g,h,i,k],3)==[[a,b],[c,d,e,f,g,h,i,k]]).
