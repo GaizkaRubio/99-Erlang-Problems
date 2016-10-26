@@ -17,3 +17,9 @@ exercise21_test() ->
 
 exercise22_test() ->
   ?assert(twentyOnetoTwentyEightExercises:range(4,9)==[4,5,6,7,8,9]).
+
+exercise23_test() ->
+  ?assert(length(twentyOnetoTwentyEightExercises:rnd_select([a,b,c,d,e,f,g,h],3))==3).
+
+exercise24_test() ->
+  ?assert(length(twentyOnetoTwentyEightExercises:rnd_getter(49, 6))==6).
