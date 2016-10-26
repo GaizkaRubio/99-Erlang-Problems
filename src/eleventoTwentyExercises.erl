@@ -57,6 +57,7 @@ rotate([H|T], N) when N > 0 -> rotate(T++[H], N - 1);
 rotate([H|T], N) when N < 0 -> rotate(T++[H], N + length([H|T])-1).
 
 %%%%Problem 20 - Remove the K'th element from a list.
-remove_at([H|T], N) when N =:= 0 ->  [H|remove_at(T, N-1)];
-remove_at([H|T], N) -> remove_at(T, N-1);
-remove_at([], N) -> [].
+remove_at(L, N) -> remove_at(L, [[],[]], N).
+remove_at([H|T], [A,B], N) when N =:= 1 -> remove_at(T, [A++[H],B], 0);
+remove_at([H|T], [A,B], N) -> remove_at(T, [A,B++[H]], N-1);
+remove_at([], L, _) -> L.
