@@ -28,4 +28,5 @@ exercise25_test() ->
   ?assert(length(twentyOnetoTwentyEightExercises:rnd_permu([a,b,c,d,e,f]))==6).
 
 exercise26_test() ->
-  ?assert(length(twentyOnetoTwentyEightExercises:combinations(3, [a,b,c,d,e,f]))=:=6).
+  io:fwrite("~w", [twentyOnetoTwentyEightExercises:combinations(3, [a,b,c,d,e,f])]),
+  ?assert(length(twentyOnetoTwentyEightExercises:combinations(3, [a,b,c,d,e,f]))=:=8).

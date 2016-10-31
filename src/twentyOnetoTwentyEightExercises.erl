@@ -42,5 +42,3 @@ combinations(N, L) -> perms(rnd_select(L, N)).
 %%Problem 27 - Group the elements of a set into disjoint subsets.
 
 %%a)
-
-%%group3(L) ->
