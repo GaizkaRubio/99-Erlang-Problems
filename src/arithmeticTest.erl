@@ -20,4 +20,7 @@ exercise32_test() ->
   ?assert(arithmetic:gcd(63,36)==9).
 
 exercise33_test() ->
-  ?assert(arithmetic:gcd(64,35)).
+  ?assert(arithmetic:coprime(49,11)).
+
+exercise34_test() ->
+  ?assert(arithmetic:totient_phi(10) == 4).
