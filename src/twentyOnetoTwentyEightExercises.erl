@@ -23,12 +23,12 @@ range(I,F) -> [I]++range(I+1,F).
 
 %%Problem 23 - Extract a given number of randomly selected elements from a list.
 rnd_select(_, 0) ->[];
-rnd_select(L, N) -> NL = eleventoTwentyExercises:remove_at(L, random:uniform(length(L))),
+rnd_select(L, N) -> NL = eleventoTwentyExercises:remove_at(L, rand:uniform(length(L))),
   lists:nth(1, NL) ++ rnd_select(lists:nth(2, NL), N-1).
 
 %%Problem 24 - Draw N different random numbers from the set 1..M.
 rnd_getter(_, 0) ->[];
-rnd_getter(M, N) ->[random:uniform(M)]++rnd_getter(M, N-1).
+rnd_getter(M, N) ->[rand:uniform(M)]++rnd_getter(M, N-1).
 
 %%Problem 25 - Generate a random permutation of the elements of a list.
 rnd_permu(L) -> rnd_select(L, length(L)).
