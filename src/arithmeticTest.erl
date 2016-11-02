@@ -23,11 +23,13 @@ exercise33_test() ->
   ?assert(arithmetic:coprime(49,11)).
 
 exercise34_test() ->
-  ?assert(arithmetic:totient_phi(10) == 4).
+  ?assert(arithmetic:totient_phi(315) == 6).
 
 exercise35_test() ->
   ?assert(arithmetic:prime_factors(315) =:= [3,3,5,7]).
 
 exercise36_test() ->
-  io:fwrite("~w", [arithmetic:prime_factors_mult(315)]),
-  ?assert(arithmetic:prime_factors_mult(315) =:= [[3,2],[5,1],[7,1]]).
+  ?assert(arithmetic:prime_factors_mult(315) =:= [{3,2},{5,1},{7,1}]).
+
+exercise37_test() ->
+  ?assert(arithmetic:totient_phi_modified(315) == 6).
