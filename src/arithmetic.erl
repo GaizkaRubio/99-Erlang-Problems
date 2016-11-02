@@ -10,7 +10,7 @@
 -author("grubio").
 
 %% API
--export([is_prime/1, gcd/2, coprime/2, totient_phi/1]).
+-export([is_prime/1, gcd/2, coprime/2, totient_phi/1, prime_factors/1, prime_factors_mult/1]).
 
 %%Problem 31 - Determine whether a given integer number is prime.
 is_prime(N) -> is_prime(N, N-1).
@@ -29,6 +29,11 @@ coprime(N, D) -> gcd(N, D) == 1.
 %%Problem 34 - Calculate Euler's totient function phi(m).
 totient_phi(N) -> length([X || X<-lists:seq(1, N), coprime(N, X)]).
 
+%%Problem 35 - Determine the prime factors of a given positive integer.
+prime_factors(N) -> prime_factors(N, 2).
+prime_factors(N, D) when N / D == 1 -> [D];
+prime_factors(N, D) when N rem D /= 0 -> prime_factors(N, D + 1);
+prime_factors(N, D) when N rem D == 0 -> [D] ++ prime_factors(N div D, 2).
 
-
-
+%%Problem 36 - Determine the prime factors of a given positive integer.
+prime_factors_mult(N)-> onetoTenExercises:encode(prime_factors(N)).
