@@ -33,3 +33,7 @@ exercise36_test() ->
 
 exercise37_test() ->
   ?assert(arithmetic:totient_phi_modified(315) == 6).
+
+exercise39_test() ->
+  io:fwrite("~w", [arithmetic:primesR(10, 20)]),
+  ?assert(arithmetic:primesR(10, 20) == [11,13,17,19]).
